@@ -20,21 +20,17 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editText3"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/button"
-        android:layout_alignTop="@+id/button"
-        android:enabled="true"
-        android:editable="true"
-        android:textColor="#000000"
-        android:background="#ffebebeb" />
+        android:layout_alignTop="@+id/button"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@android:id/list"
+        android:id="@+id/list"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/button"

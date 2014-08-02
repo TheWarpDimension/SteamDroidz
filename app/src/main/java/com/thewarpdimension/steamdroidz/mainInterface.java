@@ -14,6 +14,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.EditText;
 import java.util.List;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
@@ -28,25 +29,31 @@ import android.view.LayoutInflater;
 
 public class mainInterface extends ListActivity {
 
-    ListView m_list;
+    public ListView m_list;
     public ArrayList<String> listItems = new ArrayList<String>();
     public ArrayAdapter<String> adapter;
+
+    public EditText m_messageBox;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        m_list   = (ListView)findViewById(android.R.layout.simple_list_item_1);
+
         setContentView(R.layout.activity_main_interface);
+
+        m_messageBox = (EditText)findViewById(R.id.editText3);
+        m_list   = (ListView)findViewById(R.id.list);
+
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 listItems);
         setListAdapter(adapter);
 
         final Button button = (Button) findViewById(R.id.button);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.w("SteamDroidz", "Sent message.");
-                addMessage("test", "test");
+                    addMessage("test", m_messageBox.getText().toString());
             }
         });
 
