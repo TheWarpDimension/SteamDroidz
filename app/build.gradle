@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '20.0.0'
+    defaultConfig {
+        applicationId 'com.thewarpdimension.steamdroidz'
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName '1.0'
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // You must install or update the Google Repository through the SDK manager to use this dependency.
+    compile 'com.android.support:support-v4:19.1.0'
+}
