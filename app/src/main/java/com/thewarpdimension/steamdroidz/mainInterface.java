@@ -20,8 +20,6 @@ import java.util.List;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
-import static android.R.layout.simple_list_item_1;
-
 ///////////////////////////////////
 //          READ ME!!!!          //
 // To get username:              //
@@ -47,9 +45,7 @@ public class mainInterface extends ListActivity {
         m_messageBox = (EditText)findViewById(R.id.editText3);
         ListView m_list   =  getListView();
 
-        adapter = new ArrayAdapter<String>(this,
-                simple_list_item_1,
-                listItems);
+        adapter=new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_list_item_1, listItems);
         setListAdapter(adapter);
 
         m_list.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_NORMAL);
