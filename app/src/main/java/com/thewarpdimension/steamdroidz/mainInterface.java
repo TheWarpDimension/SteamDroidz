@@ -58,11 +58,14 @@ public class mainInterface extends ListActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    addMessage("test", m_messageBox.getText().toString());
+                    if (!(m_messageBox.getText().toString().equals(""))) {
+                        addMessage("test", m_messageBox.getText().toString());
+                        m_messageBox.setText("");
+                    }
             }
         });
 
-        };
+    };
 
         String personaname = "/TWD\\ Boncey";
 
