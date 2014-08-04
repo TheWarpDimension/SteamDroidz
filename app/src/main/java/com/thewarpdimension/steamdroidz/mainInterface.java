@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
 import android.util.Log;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.app.ListFragment;
 import android.widget.ListView;
@@ -18,6 +19,8 @@ import android.widget.EditText;
 import java.util.List;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
+
+import static android.R.layout.simple_list_item_1;
 
 ///////////////////////////////////
 //          READ ME!!!!          //
@@ -42,12 +45,14 @@ public class mainInterface extends ListActivity {
         setContentView(R.layout.activity_main_interface);
 
         m_messageBox = (EditText)findViewById(R.id.editText3);
-        m_list   = (ListView)findViewById(R.id.list);
+        ListView m_list   =  getListView();
 
         adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
+                simple_list_item_1,
                 listItems);
         setListAdapter(adapter);
+
+        m_list.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_NORMAL);
 
         final Button button = (Button) findViewById(R.id.button);
 
@@ -68,7 +73,7 @@ public class mainInterface extends ListActivity {
         }*/
 
         public void addMessage(String user, String text) {
-            listItems.add(0, user + ": " + text);
+            listItems.add(adapter.getCount(), user + ": " + text);
             adapter.notifyDataSetChanged();
         }
 
