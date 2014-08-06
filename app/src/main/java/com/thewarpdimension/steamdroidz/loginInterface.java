@@ -2,25 +2,15 @@ package com.thewarpdimension.steamdroidz;
 
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import java.util.ArrayList;
 import android.util.Log;
 import android.content.Intent;
-import android.widget.ArrayAdapter;
-import android.app.ListFragment;
-import android.widget.ListView;
-import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
-import java.util.List;
-import android.view.ViewGroup;
-import android.view.LayoutInflater;
 
 public class loginInterface extends Activity {
 
@@ -53,7 +43,7 @@ public class loginInterface extends Activity {
                         password = mEdit2.getText().toString();
                         Log.v("SteamDroidz", "Username: " + username);
                         Log.v("SteamDroidz", "Password: " + password);
-                        Intent goToNextActivity = new Intent(getApplicationContext(), mainInterface.class);
+                        Intent goToNextActivity = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(goToNextActivity);
                     }
                 });

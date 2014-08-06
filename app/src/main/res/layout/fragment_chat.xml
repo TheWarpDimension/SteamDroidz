@@ -19,14 +19,13 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:textColor="@android:color/black"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
+        android:textColor="@android:color/black"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_alignTop="@+id/button"/>
+        android:layout_toLeftOf="@+id/button" />
 
     <ListView
         android:layout_width="wrap_content"

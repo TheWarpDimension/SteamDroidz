@@ -1,24 +1,19 @@
 package com.thewarpdimension.steamdroidz;
 
-import android.app.Activity;
-import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import java.util.ArrayList;
-import android.util.Log;
+import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
-import android.app.ListFragment;
+import android.view.LayoutInflater;
 import android.widget.ListView;
-import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import java.util.List;
-import android.view.ViewGroup;
-import android.view.LayoutInflater;
 
 ///////////////////////////////////
 //          READ ME!!!!          //
@@ -28,60 +23,57 @@ import android.view.LayoutInflater;
 // loginInterface.password       //
 ///////////////////////////////////
 
-public class mainInterface extends ListActivity {
+    public class fragmentChat extends Fragment {
 
-    public ListView m_list;
-    public ArrayList<String> listItems = new ArrayList<String>();
-    public ArrayAdapter<String> adapter;
+        public ListView m_list;
+        public ArrayList<String> listItems = new ArrayList<String>();
+        public ArrayAdapter<String> adapter;
 
-    public EditText m_messageBox;
+        public EditText m_messageBox;
 
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+        public static Fragment newInstance(Context context) {
+            fragmentChat f = new fragmentChat();
 
-        setContentView(R.layout.activity_main_interface);
+            return f;
+        }
 
-        m_messageBox = (EditText)findViewById(R.id.editText3);
-        ListView m_list   =  getListView();
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        adapter=new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_list_item_1, listItems);
-        setListAdapter(adapter);
+            ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_chat, null);
 
-        m_list.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_NORMAL);
+            m_messageBox = (EditText) root.findViewById(R.id.editText3);
+            m_list = (ListView) root.findViewById(android.R.id.list);
 
-        final Button button = (Button) findViewById(R.id.button);
+            adapter = new ArrayAdapter<String>(inflater.getContext(), R.layout.simple_list_item_1, listItems);
+            m_list.setAdapter(adapter);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            m_list.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_NORMAL);
+
+            final Button button = (Button) root.findViewById(R.id.button);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
                     if (!(m_messageBox.getText().toString().equals(""))) {
                         addMessage("test", m_messageBox.getText().toString());
                         m_messageBox.setText("");
                     }
-            }
-        });
+                }
+            });
+            return root;
 
-    };
+        };
 
         String personaname = "/TWD\\ Boncey";
 
         /*@Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main_interface);
+            setContentView(R.layout.fragment_chat);
         }*/
 
         public void addMessage(String user, String text) {
             listItems.add(adapter.getCount(), user + ": " + text);
             adapter.notifyDataSetChanged();
-        }
-
-
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main_interface, menu);
-            return true;
         }
 
         @Override
@@ -95,4 +87,4 @@ public class mainInterface extends ListActivity {
             }
             return super.onOptionsItemSelected(item);
         }
-}
+    }
